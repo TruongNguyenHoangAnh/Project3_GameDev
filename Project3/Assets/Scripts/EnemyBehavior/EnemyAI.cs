@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum State {
+    Chase,
+    Patrol,
+    Idle
+};
+
 public class EnemyAI : MonoBehaviour {
-    enum State {
-        Chase,
-        Patrol,
-        Idle
-    };
+    
     
     [SerializeField] float movementSpeed = 3;
     [SerializeField] float lookSpeed = 10f;
@@ -16,7 +18,7 @@ public class EnemyAI : MonoBehaviour {
     private EnemyVision vision;
     private Transform targetTransform;
 
-    private State state;
+    [HideInInspector] public State state;
     private Vector3 playerLastPosition;
     private Vector2 directionToTarget;
     private float distanceToTarget;
@@ -68,8 +70,9 @@ public class EnemyAI : MonoBehaviour {
         float angle = 
             Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg - rotationModifier;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
-        transform.position = Vector2.MoveTowards(transform.position, playerLastPosition, movementSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
+        Vector2 position = Vector2.MoveTowards(transform.position, playerLastPosition, movementSpeed * Time.deltaTime);
+        transform.SetPositionAndRotation(position, rotation);
     }
     private void Idle() {
 
