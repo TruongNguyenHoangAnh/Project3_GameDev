@@ -10,13 +10,14 @@ public class EnemyVision : MonoBehaviour{
 
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
-    private GameObject player;
+    public GameObject playerReference;
 
-    private bool canSeePlayer;
+    public bool canSeePlayer;
     private float visionScanDelayTime = 0.2f;
     private Transform targetTransform;
+
     private void Start() {
-        player = GameObject.FindGameObjectWithTag("Player");
+        playerReference = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(VisionRoutine());
     }
     private void Update() {
