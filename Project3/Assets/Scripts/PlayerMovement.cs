@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
         CheckInput();
     }
     private void FixedUpdate() {
-        movePlayer();
+        MovePlayer();
     }
     private void SetRigidbody() {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
         horizontalInput = Input.GetAxisRaw(InputString.horizontal);
         verticalInput = Input.GetAxisRaw(InputString.vertical);
     }
-    private void movePlayer() {
+    private void MovePlayer() {
         rigidbodyComponent.velocity = 
             movementSpeed * (new Vector2(horizontalInput, verticalInput).normalized);
     }

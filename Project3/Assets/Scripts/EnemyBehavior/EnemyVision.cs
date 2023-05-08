@@ -10,19 +10,18 @@ public class EnemyVision : MonoBehaviour{
 
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
-    public GameObject playerReference;
+    
 
-    public bool canSeePlayer;
-    private float visionScanDelayTime = 0.2f;
-    private Transform targetTransform;
+    [HideInInspector] public bool canSeePlayer;
+    [HideInInspector] public GameObject playerReference;
+    private float visionScanDelayTime;
 
-    private void Start() {
+    private void Awake() {
         playerReference = GameObject.FindGameObjectWithTag("Player");
+        visionScanDelayTime = 0.2f;
         StartCoroutine(VisionRoutine());
     }
-    private void Update() {
-        Debug.Log(canSeePlayer);
-    }
+
     private IEnumerator VisionRoutine() {
         while (true) {
             yield return new WaitForSeconds(visionScanDelayTime);
@@ -35,7 +34,7 @@ public class EnemyVision : MonoBehaviour{
             canSeePlayer = false;
             return;
         }
-        targetTransform = colliderInRange.transform;
+        Transform targetTransform = colliderInRange.transform;
         Vector2 directionToTarget = (targetTransform.position - transform.position).normalized;
         if (!(Vector2.Angle(transform.right, directionToTarget) < (angle / 2))) {
             canSeePlayer = false;
