@@ -10,15 +10,17 @@ public class FieldOfViewEditor : Editor{
         Handles.color = Color.white;
         Handles.DrawWireArc(enemyVision.transform.position, Vector3.forward, Vector3.right, 360, enemyVision.radius);
 
+        Handles.color = Color.yellow;
+        Handles.DrawWireArc(enemyVision.transform.position, Vector3.forward, Vector3.right, 460, enemyVision.detectNearByRadius);
+
         Vector3 viewAngle01 = DirectionFromAngle(enemyVision.transform.eulerAngles.z, -enemyVision.angle / 2);
         Vector3 viewAngle02 = DirectionFromAngle(enemyVision.transform.eulerAngles.z, enemyVision.angle / 2);
 
-        Handles.color = Color.yellow;
         Handles.DrawLine(enemyVision.transform.position, enemyVision.transform.position + viewAngle01 * enemyVision.radius);
         Handles.DrawLine(enemyVision.transform.position, enemyVision.transform.position + viewAngle02 * enemyVision.radius); 
         
         if (enemyVision.canSeePlayer) {
-            Handles.color = Color.red;
+            Handles.color = Color.green;
             Handles.DrawLine(enemyVision.transform.position, enemyVision.playerReference.transform.position);
         }
     }

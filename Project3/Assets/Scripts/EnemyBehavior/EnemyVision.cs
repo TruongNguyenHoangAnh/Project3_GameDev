@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour{
     [Header("Enemy vision settings")]
-    public float radius = 5f;
+    public float radius = 7f;
+    public float detectNearByRadius = 2f;
     [Range(0,360)]
     public float angle;
 
@@ -36,7 +37,9 @@ public class EnemyVision : MonoBehaviour{
         }
         Transform targetTransform = colliderInRange.transform;
         Vector2 directionToTarget = (targetTransform.position - transform.position).normalized;
-        if (!(Vector2.Angle(transform.right, directionToTarget) < (angle / 2))) {
+        float distanceToTarget = Vector3.Distance(targetTransform.position, transform.position);
+        if (!(Vector2.Angle(transform.right, directionToTarget) < (angle / 2) 
+            || distanceToTarget < detectNearByRadius)) {
             canSeePlayer = false;
             return; 
         }
