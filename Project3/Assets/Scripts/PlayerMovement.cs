@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float movementSpeed = 8f;
 
     Rigidbody2D rigidbodyComponent;
+    private Animator anim;
 
     private class InputString {
         static public string horizontal = "Horizontal";
@@ -17,12 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start() {
         SetRigidbody();
+        anim = GetComponent<Animator>();
     }
     private void Update() {
         CheckInput();
     }
     private void FixedUpdate() {
-        movePlayer();
+        MovePlayer();
     }
     private void SetRigidbody() {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
@@ -35,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
         horizontalInput = Input.GetAxisRaw(InputString.horizontal);
         verticalInput = Input.GetAxisRaw(InputString.vertical);
     }
-    private void movePlayer() {
+    private void MovePlayer() {
         rigidbodyComponent.velocity = 
             movementSpeed * (new Vector2(horizontalInput, verticalInput).normalized);
     }
