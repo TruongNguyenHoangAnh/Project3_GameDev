@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour {
     [SerializeField] float lookSpeed = 10f;
     [SerializeField] float rotationModifier = 0f;
     [SerializeField] float stopDistance = 1.5f;
+    [SerializeField] float attackRange = 2f;
     [Header("Idle setting")]
     [SerializeField] float lookAroundSpeed = 10f;
     
@@ -31,7 +32,8 @@ public class EnemyAI : MonoBehaviour {
     private Vector3 playerLastPosition;
     private Vector2 directionToTarget;
     private float distanceToTarget;
-    private bool isLookingAround;
+    [HideInInspector] public bool isLookingAround;
+    [HideInInspector] public bool isAttacking;
     private bool isPatroling;
     private Vector3 patrolPivot;
     private float chaseCounter;
@@ -49,7 +51,6 @@ public class EnemyAI : MonoBehaviour {
     private void Update() {
         CheckingState();
         EnemyBehavior();
-        Debug.Log(state);
     }
 
     private void SetRigidbody() {
@@ -118,6 +119,11 @@ public class EnemyAI : MonoBehaviour {
         LookAtTarget();
     }
     private void MoveTowardTarget() {
+        if (distanceToTarget <= attackRange && vision.canSeePlayer) {
+            isAttacking = true;
+        } else {
+            isAttacking = false;
+        }
         if (distanceToTarget < stopDistance && vision.canSeePlayer) {
             return;
         }
