@@ -9,10 +9,6 @@ public class EnemyAnimation : MonoBehaviour{
     [SerializeField] EnemyVision vision;
 
     
-    bool isDuringAttackAnimation;
-    private void Awake() {
-        isDuringAttackAnimation = false;
-    }
     private void Update() {
         SetAnimation();
     }
