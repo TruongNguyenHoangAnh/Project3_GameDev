@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour{
-    [SerializeField] float attackCoolDown = 1f;
     
     [SerializeField] Animator animator;
     [SerializeField] EnemyAI enemyAI;
