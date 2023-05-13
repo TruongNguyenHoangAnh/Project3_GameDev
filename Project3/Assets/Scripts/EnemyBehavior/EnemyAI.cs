@@ -169,7 +169,7 @@ public class EnemyAI : MonoBehaviour {
         Vector3 direction = randomPosition - transform.position;
         Quaternion targetRotation = TargetRotaionFromDirection(direction);
 
-        while (timeCounter < 1.5f && transform.position != randomPosition) {
+        while (timeCounter < 5f && transform.position != randomPosition) {
             Vector2 nextPosition =
                 Vector2.MoveTowards(transform.position, randomPosition, movementSpeed * Time.deltaTime);
             

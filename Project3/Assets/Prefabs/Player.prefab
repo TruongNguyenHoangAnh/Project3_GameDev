@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467132313}
   - component: {fileID: 467132314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467132312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0.06, z: 0}
+  m_LocalPosition: {x: 0.67, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662130954}
   - component: {fileID: 662130955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615569127}
   - component: {fileID: 1615569128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConeLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131070662}
   - component: {fileID: 2131070663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,8 @@ GameObject:
   - component: {fileID: 7428557625450353862}
   - component: {fileID: 542638358}
   - component: {fileID: 542638363}
-  m_Layer: 0
+  - component: {fileID: 150020623}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -382,8 +383,8 @@ Transform:
   m_GameObject: {fileID: 7428557625450353861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.00000023841858, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 467132313}
   - {fileID: 662130954}
@@ -431,7 +432,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec3871aa272549d40a6a09c2c973d7ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e35e937083d5c86488775c1a6e4f5d29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -475,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90249bac92262fe41afabfde5b0e3bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 3
 --- !u!70 &542638358
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -504,3 +505,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c133a4b84a825ff4bb843a81c4d59eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &150020623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428557625450353861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c861f7fdd8e664789d735573d0ce3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
