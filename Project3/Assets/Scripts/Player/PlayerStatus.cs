@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour{
     [Header("Caching attribute")]
     [SerializeField] HealthBar healthBar;
 
-    private void Awake() {
+    private void Start() {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
